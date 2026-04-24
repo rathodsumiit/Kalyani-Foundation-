@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kalyani Foundation | NGO Website</title>
+  <meta name="description" content="A modern NGO website template for Kalyani Foundation-inspired community service, causes, events, and volunteer engagement." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #f6f8fc;
+      --card: rgba(255,255,255,.82);
+      --text: #10213a;
+      --muted: #5f6b80;
+      --primary: #0f6ae8;
+      --primary-2: #15a6b6;
+      --accent: #f4b400;
+      --shadow: 0 20px 60px rgba(16, 33, 58, .12);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --max: 1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(15,106,232,.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(21,166,182,.10), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f6f8fc 100%);
+    }
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(var(--max), calc(100% - 32px)); margin-inline:auto}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
+      border:none; border-radius:999px; padding:14px 22px; font-weight:700;
+      transition:.25s ease; cursor:pointer;
+    }
+    .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-2)); color:#fff; box-shadow:0 14px 30px rgba(15,106,232,.25)}
+    .btn-primary:hover{transform:translateY(-2px); filter:saturate(1.05)}
+    .btn-light{background:#fff; color:var(--text); box-shadow:var(--shadow)}
+    .section{padding:92px 0}
+    .eyebrow{
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:8px 14px; border-radius:999px;
+      background:rgba(15,106,232,.08); color:var(--primary); font-weight:700; font-size:.85rem;
+      margin-bottom:18px;
+    }
+    .section h2{font-size:clamp(2rem, 3vw, 3.25rem); line-height:1.08; margin:0 0 14px}
+    .section p.lead{color:var(--muted); font-size:1.03rem; line-height:1.75; max-width:760px; margin:0}
+
+    .topbar{
+      background:#0f172a; color:#dbe4f0; font-size:.92rem;
+    }
+    .topbar .container{
+      display:flex; justify-content:space-between; gap:16px; padding:10px 0; flex-wrap:wrap;
+    }
+    .topbar span{display:inline-flex; gap:8px; align-items:center}
+    .nav{
+      position:sticky; top:0; z-index:1000;
+      backdrop-filter: blur(18px);
+      background:rgba(255,255,255,.72);
+      border-bottom:1px solid rgba(16,33,58,.08);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between; gap:18px;
+      padding:16px 0;
+    }
+    .brand{display:flex; align-items:center; gap:12px; font-weight:900; letter-spacing:-.02em}
+    .brand-mark{
+      width:44px; height:44px; border-radius:14px;
+      background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      display:grid; place-items:center; color:#fff; box-shadow:0 12px 24px rgba(15,106,232,.26);
+      font-size:1.1rem;
+    }
+    .brand small{display:block; color:var(--muted); font-weight:600; letter-spacing:0}
+    .nav-links{display:flex; align-items:center; gap:24px; color:#30425f; font-weight:600}
+    .nav-links a:hover{color:var(--primary)}
+    .menu-btn{display:none}
+
+    .hero{padding:40px 0 30px}
+    .hero-wrap{
+      display:grid; grid-template-columns: 1.1fr .9fr; gap:34px; align-items:center;
+      min-height: calc(100vh - 140px);
+    }
+    .hero h1{
+      font-size:clamp(2.8rem, 5vw, 5.3rem);
+      line-height:1.02;
+      letter-spacing:-.05em;
+      margin:0 0 16px;
+    }
+    .hero h1 .grad{
+      background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .hero p{
+      color:var(--muted); font-size:1.08rem; line-height:1.8; max-width:640px; margin:0 0 28px;
+    }
+    .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:28px}
+    .hero-metrics{
+      display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px; max-width:620px;
+    }
+    .metric{
+      background:var(--card); border:1px solid rgba(255,255,255,.7); border-radius:20px; padding:18px;
+      box-shadow:var(--shadow);
+    }
+    .metric strong{display:block; font-size:1.6rem; margin-bottom:6px}
+    .metric span{color:var(--muted); font-size:.94rem; line-height:1.45}
+
+    .hero-card{
+      position:relative; padding:18px;
+      background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.65));
+      border:1px solid rgba(16,33,58,.08);
+      box-shadow:var(--shadow);
+      border-radius:34px;
+    }
+    .hero-card img{
+      width:100%; height:520px; object-fit:cover; border-radius:26px;
+    }
+    .floating{
+      position:absolute; left:18px; right:18px; bottom:18px;
+      background:rgba(255,255,255,.88); backdrop-filter:blur(12px);
+      border:1px solid rgba(16,33,58,.08);
+      border-radius:22px; padding:18px;
+      display:flex; justify-content:space-between; gap:16px; align-items:center;
+    }
+    .floating b{display:block; margin-bottom:4px}
+    .floating p{margin:0; font-size:.92rem; color:var(--muted)}
+
+    .cards-4{
+      display:grid; grid-template-columns:repeat(4,1fr); gap:18px;
+    }
+    .card{
+      background:var(--card); border:1px solid rgba(16,33,58,.08);
+      border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden;
+    }
+    .service{
+      padding:22px; min-height: 250px;
+    }
+    .icon{
+      width:54px; height:54px; border-radius:18px;
+      background:linear-gradient(135deg, rgba(15,106,232,.12), rgba(21,166,182,.12));
+      display:grid; place-items:center; font-size:1.35rem; margin-bottom:18px;
+    }
+    .service h3{margin:0 0 10px; font-size:1.15rem}
+    .service p{margin:0 0 16px; color:var(--muted); line-height:1.7; font-size:.96rem}
+    .link{
+      display:inline-flex; gap:.4rem; align-items:center; color:var(--primary); font-weight:700;
+    }
+
+    .about-grid{
+      display:grid; grid-template-columns: .95fr 1.05fr; gap:28px; align-items:center;
+    }
+    .about-img{
+      border-radius:32px; overflow:hidden; box-shadow:var(--shadow);
+      min-height: 520px;
+    }
+    .about-img img{height:100%; width:100%; object-fit:cover}
+    .bullet-list{display:grid; gap:12px; margin:24px 0}
+    .bullet{
+      display:flex; gap:12px; align-items:flex-start;
+      padding:14px 16px; border-radius:18px; background:rgba(15,106,232,.05);
+    }
+    .bullet i{
+      width:28px; height:28px; border-radius:9px; flex:0 0 28px;
+      display:grid; place-items:center; background:linear-gradient(135deg,var(--primary),var(--primary-2)); color:#fff; font-style:normal;
+      font-size:.8rem; margin-top:2px;
+    }
+    .stats{
+      display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:22px;
+    }
+    .stat{
+      padding:18px; text-align:center;
+      background:#fff; border:1px solid rgba(16,33,58,.08); border-radius:22px; box-shadow:var(--shadow);
+    }
+    .stat strong{display:block; font-size:1.8rem}
+    .stat span{color:var(--muted); font-weight:600; font-size:.92rem}
+
+    .causes-grid, .events-grid, .gallery-grid, .testimonials-grid{
+      display:grid; gap:18px;
+    }
+    .causes-grid{grid-template-columns:repeat(3,1fr)}
+    .events-grid{grid-template-columns:repeat(3,1fr)}
+    .gallery-grid{grid-template-columns:repeat(6,1fr)}
+    .testimonials-grid{grid-template-columns:repeat(4,1fr)}
+
+    .cause .thumb, .event .thumb, .testimonial .avatar{
+      width:100%; border-radius:22px; overflow:hidden;
+    }
+    .cause .thumb img, .event .thumb img, .testimonial .avatar img{
+      width:100%; height:210px; object-fit:cover;
+    }
+    .cause .content, .event .content, .testimonial{
+      padding:20px;
+    }
+    .cause h3, .event h3{margin:0 0 10px; font-size:1.15rem; line-height:1.35}
+    .cause p, .event p{margin:0 0 16px; color:var(--muted); line-height:1.7; font-size:.96rem}
+    .bar{
+      height:10px; border-radius:999px; background:#e9eef7; overflow:hidden; margin:14px 0 10px;
+    }
+    .bar > span{display:block; height:100%; border-radius:inherit; background:linear-gradient(135deg,var(--primary),var(--primary-2))}
+    .money{display:flex; justify-content:space-between; color:#30425f; font-weight:700; font-size:.94rem; gap:10px; flex-wrap:wrap}
+
+    .event .date{
+      display:inline-flex; flex-direction:column; align-items:center; justify-content:center;
+      width:74px; height:74px; border-radius:22px; background:linear-gradient(135deg,var(--primary),var(--primary-2)); color:#fff;
+      font-weight:900; margin-bottom:16px;
+      box-shadow:0 14px 30px rgba(15,106,232,.26);
+    }
+    .event .date strong{font-size:1.45rem; line-height:1}
+    .event .date span{font-size:.82rem; letter-spacing:.09em}
+
+    .gallery-grid .item{
+      border-radius:22px; overflow:hidden; box-shadow:var(--shadow);
+      min-height:190px; position:relative;
+    }
+    .gallery-grid .item img{width:100%; height:100%; object-fit:cover}
+
+    .quote{
+      padding:22px; border-radius:24px; background:#fff; border:1px solid rgba(16,33,58,.08);
+      box-shadow:var(--shadow);
+    }
+    .quote p{margin:14px 0 0; color:var(--muted); line-height:1.8}
+    .quote .name{font-weight:800}
+    .quote .role{font-size:.92rem; color:var(--primary); font-weight:700}
+
+    .cta{
+      background:linear-gradient(135deg, #0e1d40, #0f6ae8 55%, #15a6b6 100%);
+      color:#fff; border-radius:34px; overflow:hidden;
+      box-shadow:0 24px 60px rgba(15,106,232,.22);
+    }
+    .cta-inner{
+      display:grid; grid-template-columns:1.1fr .9fr; gap:24px; padding:40px;
+      align-items:center;
+    }
+    .cta p{color:rgba(255,255,255,.82); line-height:1.8}
+    .form{
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:28px; padding:22px;
+      backdrop-filter: blur(14px);
+    }
+    .field{display:grid; gap:10px; margin-bottom:14px}
+    .field label{font-size:.9rem; font-weight:700; color:#eef5ff}
+    .field input,.field textarea{
+      width:100%; border:none; outline:none; resize:vertical;
+      border-radius:16px; padding:14px 15px; font:inherit; color:var(--text);
+      background:rgba(255,255,255,.95);
+    }
+    .field textarea{min-height:110px}
+
+    .footer{
+      padding:34px 0 22px; color:#58708f;
+    }
+    .footer-grid{
+      display:grid; grid-template-columns:1.1fr .9fr .9fr .9fr; gap:18px;
+      padding:24px 0 28px;
+      border-top:1px solid rgba(16,33,58,.08);
+      border-bottom:1px solid rgba(16,33,58,.08);
+      margin-top:34px;
+    }
+    .footer h4{margin:0 0 12px; color:var(--text)}
+    .footer a{display:block; padding:6px 0; color:inherit}
+    .footer a:hover{color:var(--primary)}
+    .copyright{
+      display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
+      padding-top:18px; font-size:.93rem;
+    }
+    .contact-chip{
+      display:inline-flex; align-items:center; gap:10px; padding:12px 14px; border-radius:16px;
+      background:rgba(255,255,255,.14); color:#fff; margin:6px 8px 0 0;
+    }
+
+    @media (max-width: 1080px){
+      .hero-wrap,.about-grid,.cta-inner,.footer-grid{grid-template-columns:1fr}
+      .cards-4,.causes-grid,.events-grid,.testimonials-grid{grid-template-columns:repeat(2,1fr)}
+      .gallery-grid{grid-template-columns:repeat(3,1fr)}
+      .hero-card img{height:420px}
+      .section{padding:76px 0}
+    }
+    @media (max-width: 760px){
+      .nav-links{display:none}
+      .menu-btn{display:inline-flex}
+      .cards-4,.causes-grid,.events-grid,.testimonials-grid,.gallery-grid,.stats,.hero-metrics{grid-template-columns:1fr}
+      .hero{padding-top:24px}
+      .hero-card img{height:360px}
+      .floating{position:static; margin-top:14px}
+      .cta-inner,.service,.cause .content,.event .content,.testimonial{padding:18px}
+      .section{padding:64px 0}
+      .topbar .container{font-size:.82rem}
+    }
+    .mobile-panel{
+      display:none;
+      padding:0 0 16px;
+    }
+    .mobile-panel.open{display:block}
+    .mobile-panel a{
+      display:block; padding:12px 0; border-top:1px solid rgba(16,33,58,.08);
+      color:#30425f; font-weight:700;
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div>
+        <span>✉️ Kalyanifoundation0@gmail.com</span>
+      </div>
+      <div>
+        <span>📍 Pune, Maharashtra</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="#home">
+          <div class="brand-mark">SF</div>
+          <div>
+            Kalyani Foundation
+            <small>Serve humanity, strengthen the nation</small>
+          </div>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#causes">Causes</a>
+          <a href="#events">Events</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <button class="btn btn-light menu-btn" id="menuBtn" aria-expanded="false">Menu ☰</button>
+        <a class="btn btn-primary" href="#contact">Donate Now</a>
+      </div>
+      <nav class="mobile-panel" id="mobilePanel" aria-label="Mobile">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#causes">Causes</a>
+        <a href="#events">Events</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-wrap">
+        <div>
+          <span class="eyebrow">❤️ Together for Change</span>
+          <h1>Serving <span class="grad">Humanity</span>, Strengthening the Nation</h1>
+          <p>
+            Build a beautiful NGO website that tells your mission clearly, inspires trust, and makes it easy for people to volunteer, donate, and follow your work.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Become a Volunteer</a>
+            <a href="#causes" class="btn btn-light">Explore Causes</a>
+          </div>
+          <div class="hero-metrics">
+            <div class="metric"><strong class="counter" data-target="28">0</strong><span>Years of service and trust</span></div>
+            <div class="metric"><strong class="counter" data-target="150">0</strong><span>Community drives and events</span></div>
+            <div class="metric"><strong class="counter" data-target="25000">0</strong><span>Lives touched through outreach</span></div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1200&q=80" alt="Volunteers helping a community">
+          <div class="floating">
+            <div>
+              <b>Focused on health, education & service</b>
+              <p>Modern, clean, and emotional storytelling for your NGO.</p>
+            </div>
+            <a class="btn btn-primary" href="#contact">Join Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <span class="eyebrow">Our Services</span>
+        <h2>Programs that create real impact</h2>
+        <p class="lead">This layout follows the same kind of purpose-driven structure as the reference site, with clear sections for service, impact, causes, events, gallery, and volunteer support. citeturn271076view0turn271076view1turn271076view2turn271076view3turn271076view4turn271076view5</p>
+
+        <div style="height:18px"></div>
+        <div class="cards-4">
+          <article class="card service">
+            <div class="icon">🩺</div>
+            <h3>Healthcare Service</h3>
+            <p>Free health checkups, awareness camps, and medical support to help communities live healthier lives.</p>
+            <a class="link" href="#contact">Join us now →</a>
+          </article>
+          <article class="card service">
+            <div class="icon">🌱</div>
+            <h3>Environmental Care</h3>
+            <p>Plantation drives, cleanliness campaigns, and sustainability programs that protect the future.</p>
+            <a class="link" href="#gallery">See work →</a>
+          </article>
+          <article class="card service">
+            <div class="icon">🎓</div>
+            <h3>Youth Guidance</h3>
+            <p>Mentoring, education support, and career guidance to shape confident and capable young people.</p>
+            <a class="link" href="#about">Learn more →</a>
+          </article>
+          <article class="card service">
+            <div class="icon">⚖️</div>
+            <h3>Legal & Social Support</h3>
+            <p>Help with awareness, rights, and community support so more people can access justice and dignity.</p>
+            <a class="link" href="#contact">Get involved →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-img">
+          <img src="https://images.unsplash.com/photo-1559027615-cd6b58e5d8fb?auto=format&fit=crop&w=1200&q=80" alt="Team of volunteers planning community service">
+        </div>
+        <div>
+          <span class="eyebrow">About Us</span>
+          <h2>We believe small actions today can change tomorrow</h2>
+          <p class="lead">
+            Write a compelling story about your foundation, what you do, and why people should trust you. This section is designed to feel warm, credible, and mission-driven.
+          </p>
+
+          <div class="bullet-list">
+            <div class="bullet"><i>✓</i><div><strong>Community first</strong><br><span style="color:var(--muted)">Every activity is built around people and local needs.</span></div></div>
+            <div class="bullet"><i>✓</i><div><strong>Transparent impact</strong><br><span style="color:var(--muted)">Show your camps, drives, donations, and outcomes clearly.</span></div></div>
+            <div class="bullet"><i>✓</i><div><strong>Volunteer-friendly</strong><br><span style="color:var(--muted)">Make it simple to join, donate, and stay connected.</span></div></div>
+          </div>
+
+          <div class="stats">
+            <div class="stat"><strong class="counter" data-target="28">0</strong><span>Years</span></div>
+            <div class="stat"><strong class="counter" data-target="70">0</strong><span>Projects</span></div>
+            <div class="stat"><strong class="counter" data-target="12">0</strong><span>Branches</span></div>
+            <div class="stat"><strong class="counter" data-target="3000">0</strong><span>Volunteers</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="causes">
+      <div class="container">
+        <span class="eyebrow">Popular Causes</span>
+        <h2>Choose a cause to support</h2>
+        <p class="lead">Inspired by the cause-first structure on the reference website, this section highlights campaigns with progress bars and donation prompts. citeturn271076view1</p>
+
+        <div style="height:18px"></div>
+        <div class="causes-grid">
+          <article class="card cause">
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=1200&q=80" alt="Tree plantation drive"></div>
+            <div class="content">
+              <a class="btn btn-primary" href="#contact" style="padding:10px 16px; margin-bottom:14px">Donate Now</a>
+              <h3>Afforestation Program & Fundraising</h3>
+              <p>Support tree plantation drives, campus greening, and local environment restoration.</p>
+              <div class="bar"><span style="width:68%"></span></div>
+              <div class="money"><span>Goal: ₹1,34,000</span><span>Raised: ₹92,000</span></div>
+            </div>
+          </article>
+
+          <article class="card cause">
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1576765608535-5f04d1c8c6c3?auto=format&fit=crop&w=1200&q=80" alt="Solar panels on rooftops"></div>
+            <div class="content">
+              <a class="btn btn-primary" href="#contact" style="padding:10px 16px; margin-bottom:14px">Donate Now</a>
+              <h3>Clean Energy Awareness</h3>
+              <p>Promote solar adoption, energy literacy, and eco-friendly habits in the community.</p>
+              <div class="bar"><span style="width:83%"></span></div>
+              <div class="money"><span>Goal: ₹1,55,000</span><span>Raised: ₹1,37,000</span></div>
+            </div>
+          </article>
+
+          <article class="card cause">
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1200&q=80" alt="Wildlife and nature conservation"></div>
+            <div class="content">
+              <a class="btn btn-primary" href="#contact" style="padding:10px 16px; margin-bottom:14px">Donate Now</a>
+              <h3>Nature & Wildlife Protection</h3>
+              <p>Help preserve biodiversity, protect habitats, and fund conservation awareness programs.</p>
+              <div class="bar"><span style="width:56%"></span></div>
+              <div class="money"><span>Goal: ₹1,10,000</span><span>Raised: ₹62,000</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="events">
+      <div class="container">
+        <span class="eyebrow">Upcoming / Recent Events</span>
+        <h2>Events that inspire action</h2>
+        <p class="lead">The reference site also places strong emphasis on recent activities and event storytelling. citeturn271076view2</p>
+
+        <div style="height:18px"></div>
+        <div class="events-grid">
+          <article class="card event">
+            <div class="content">
+              <div class="date"><strong>22</strong><span>JUN</span></div>
+              <h3>Tree Plantation and Cleanliness Drive</h3>
+              <p>A community event focused on environmental care, sanitation, and volunteer participation.</p>
+              <a class="link" href="#contact">About Event →</a>
+            </div>
+          </article>
+
+          <article class="card event">
+            <div class="content">
+              <div class="date"><strong>29</strong><span>DEC</span></div>
+              <h3>Blood Donation and Wellness Initiative</h3>
+              <p>Encourage health, gratitude, and positive community action through organized support programs.</p>
+              <a class="link" href="#contact">About Event →</a>
+            </div>
+          </article>
+
+          <article class="card event">
+            <div class="content">
+              <div class="date"><strong>31</strong><span>DEC</span></div>
+              <h3>Say No to Alcohol Awareness Drive</h3>
+              <p>A strong social awareness campaign promoting dignity, safety, and a better future for youth.</p>
+              <a class="link" href="#contact">About Event →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <span class="eyebrow">Gallery</span>
+        <h2>Our work in action</h2>
+        <p class="lead">A visual gallery helps your NGO feel active, trustworthy, and human. This mirrors the portfolio-heavy structure on the reference site. citeturn271076view3</p>
+
+        <div style="height:18px"></div>
+        <div class="gallery-grid">
+          <div class="item" style="grid-column:span 2"><img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80" alt="Volunteers serving food"></div>
+          <div class="item" style="grid-column:span 2"><img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80" alt="Plantation drive volunteers"></div>
+          <div class="item" style="grid-column:span 2"><img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=1200&q=80" alt="Community meeting"></div>
+          <div class="item" style="grid-column:span 3"><img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80" alt="Team collaboration"></div>
+          <div class="item" style="grid-column:span 3"><img src="https://images.unsplash.com/photo-1509099385268-86b9f9d4f6f7?auto=format&fit=crop&w=1200&q=80" alt="Children and volunteers"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials">
+      <div class="container">
+        <span class="eyebrow">Testimonials</span>
+        <h2>Voices that motivate us</h2>
+        <p class="lead">The original site uses testimonials to build trust and social proof, so this version does the same. citeturn271076view4</p>
+
+        <div style="height:18px"></div>
+        <div class="testimonials-grid">
+          <article class="quote">
+            <div class="name">Ananya</div>
+            <div class="role">Volunteer</div>
+            <p>“The health camp I joined was managed beautifully. The team was warm, organized, and deeply committed to the community.”</p>
+          </article>
+          <article class="quote">
+            <div class="name">Rohit</div>
+            <div class="role">Local Supporter</div>
+            <p>“Their awareness drive made a real difference in our area. People actually listened and participated.”</p>
+          </article>
+          <article class="quote">
+            <div class="name">Meera</div>
+            <div class="role">Donor</div>
+            <p>“I liked how transparent and meaningful the foundation’s work felt. It was easy to trust their mission.”</p>
+          </article>
+          <article class="quote">
+            <div class="name">Amit</div>
+            <div class="role">Community Member</div>
+            <p>“Plantation and cleanliness events brought people together. It was more than an event — it was a movement.”</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container cta">
+        <div class="cta-inner">
+          <div>
+            <span class="eyebrow" style="background:rgba(255,255,255,.14); color:#fff">Become a Volunteer</span>
+            <h2 style="color:#fff">Join hands to serve humanity and build a stronger nation</h2>
+            <p>
+              Use this section for volunteer signup, donation inquiries, or event participation. It is styled to feel bold, trustworthy, and action-oriented.
+            </p>
+            <div>
+             
+              <span class="contact-chip">✉️ Kalyanifoundation0@gmail.com</span>
+              <span class="contact-chip">📍 Pune, India</span>
+            </div>
+          </div>
+
+          <form class="form" onsubmit="event.preventDefault(); alert('Thanks! Your message has been captured in this demo template.');">
+            <div class="field">
+              <label>Name</label>
+              <input type="text" placeholder="Your full name" required>
+            </div>
+            <div class="field">
+              <label>Email</label>
+              <input type="email" placeholder="Your email address" required>
+            </div>
+            <div class="field">
+              <label>Phone</label>
+              <input type="tel" placeholder="Your phone number">
+            </div>
+            <div class="field">
+              <label>Message</label>
+              <textarea placeholder="Tell us how you would like to help"></textarea>
+            </div>
+            <button class="btn btn-primary" style="width:100%">Submit Now</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand">
+            <div class="brand-mark">SF</div>
+            <div>Kalyani Foundation<small>Community service website template</small></div>
+          </div>
+          <p style="line-height:1.8; margin:16px 0 0">
+            A clean NGO website starter designed to highlight causes, events, volunteers, and trust.
+          </p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#causes">Causes</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a href="#">Pune, Maharashtra</a>
+          
+          <a href="#">Kalyanifoundation0@gmail.com</a>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <a href="#">Volunteer</a>
+          <a href="#">Donate</a>
+          <a href="#">Events</a>
+          <a href="#">Gallery</a>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <div>© 2026 NGO Website Template. All rights reserved.</div>
+        <div>Built for a clean, modern foundation homepage.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobilePanel = document.getElementById('mobilePanel');
+
+    menuBtn?.addEventListener('click', () => {
+      const open = mobilePanel.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.textContent = open ? 'Close ✕' : 'Menu ☰';
+    });
+
+    mobilePanel?.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobilePanel.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.textContent = 'Menu ☰';
+      });
+    });
+
+    const counters = document.querySelectorAll('.counter');
+    const animateCounter = (el) => {
+      const target = Number(el.dataset.target || 0);
+      const duration = 1600;
+      const start = performance.now();
+
+      const step = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = Math.floor(eased * target);
+        el.textContent = target >= 1000 ? value.toLocaleString() : value;
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.45 });
+
+    counters.forEach(c => observer.observe(c));
+  </script>
+</body>
+</html>
