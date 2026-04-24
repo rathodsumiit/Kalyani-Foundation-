@@ -14,31 +14,67 @@
 }
 
 body{
+  background: #f5f7fb;
+}
+
+/* 🔥 NAVBAR */
+.navbar{
+  width:100%;
+  background:#0f6ae8;
+  padding:15px 0;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:1000;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.navbar ul{
+  display:flex;
+  justify-content:center;
+  list-style:none;
+  gap:40px;
+}
+
+.navbar ul li a{
+  color:white;
+  text-decoration:none;
+  font-size:16px;
+  font-weight:500;
+  transition:0.3s;
+}
+
+.navbar ul li a:hover{
+  color:#ffd700;
+}
+
+/* 🔥 CENTER AREA */
+.wrapper{
   height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  background: linear-gradient(135deg, #0f6ae8, #00c6ff);
+  padding-top:80px;
 }
 
-/* Card */
+/* CARD */
 .container{
   background:#fff;
   padding:40px;
   border-radius:20px;
   text-align:center;
   max-width:420px;
-  box-shadow:0 20px 50px rgba(0,0,0,0.2);
+  box-shadow:0 20px 50px rgba(0,0,0,0.15);
   animation: fadeIn 1s ease;
 }
 
-/* Logo */
+/* LOGO */
 .logo{
   width:80px;
-  margin-bottom:15px;
+  margin-bottom:10px;
 }
 
-/* Tick Animation */
+/* CHECKMARK */
 .checkmark{
   width:80px;
   height:80px;
@@ -46,7 +82,7 @@ body{
 }
 
 .checkmark circle{
-  stroke: #4CAF50;
+  stroke: #28a745;
   stroke-width: 4;
   fill:none;
   stroke-dasharray: 166;
@@ -55,7 +91,7 @@ body{
 }
 
 .checkmark path{
-  stroke:#4CAF50;
+  stroke:#28a745;
   stroke-width:4;
   fill:none;
   stroke-dasharray: 48;
@@ -72,7 +108,7 @@ body{
   to{opacity:1; transform:translateY(0);}
 }
 
-/* Text */
+/* TEXT */
 h2{
   color:#28a745;
   margin-bottom:10px;
@@ -80,7 +116,7 @@ h2{
 
 p{
   font-size:16px;
-  color:#333;
+  color:#444;
   line-height:1.6;
 }
 </style>
@@ -88,20 +124,35 @@ p{
 
 <body>
 
-<div class="container">
+<!-- 🔥 NAVBAR (Same as your main site) -->
+<div class="navbar">
+  <ul>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#causes">Causes</a></li>
+    <li><a href="index.html#events">Events</a></li>
+    <li><a href="index.html#gallery">Gallery</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</div>
 
-  <!-- 🔥 Add your logo here -->
-  <img src="logo.png" alt="Kalyani Foundation Logo" class="logo">
+<!-- 🔥 VERIFICATION CARD -->
+<div class="wrapper">
+  <div class="container">
 
-  <!-- Animated Tick -->
-  <svg class="checkmark" viewBox="0 0 52 52">
-    <circle cx="26" cy="26" r="25"/>
-    <path d="M14 27 L22 35 L38 18"/>
-  </svg>
+    <!-- Logo -->
+    <img src="logo.png" alt="Kalyani Foundation Logo" class="logo">
 
-  <h2 id="title">Verifying...</h2>
-  <p id="msg"></p>
+    <!-- Tick -->
+    <svg class="checkmark" viewBox="0 0 52 52">
+      <circle cx="26" cy="26" r="25"/>
+      <path d="M14 27 L22 35 L38 18"/>
+    </svg>
 
+    <h2 id="title">Verifying...</h2>
+    <p id="msg"></p>
+
+  </div>
 </div>
 
 <script>
