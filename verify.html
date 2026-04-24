@@ -2,30 +2,107 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Verification</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalyani Foundation Verification</title>
 
 <style>
-  body{
-    font-family: Arial;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    background:#ffffff;
-    margin:0;
-  }
-  p{
-    font-size:20px;
-    text-align:center;
-    max-width:600px;
-    line-height:1.6;
-  }
-</style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
 
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(135deg, #0f6ae8, #00c6ff);
+}
+
+/* Card */
+.container{
+  background:#fff;
+  padding:40px;
+  border-radius:20px;
+  text-align:center;
+  max-width:420px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.2);
+  animation: fadeIn 1s ease;
+}
+
+/* Logo */
+.logo{
+  width:80px;
+  margin-bottom:15px;
+}
+
+/* Tick Animation */
+.checkmark{
+  width:80px;
+  height:80px;
+  margin:20px auto;
+}
+
+.checkmark circle{
+  stroke: #4CAF50;
+  stroke-width: 4;
+  fill:none;
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  animation: stroke 0.6s forwards;
+}
+
+.checkmark path{
+  stroke:#4CAF50;
+  stroke-width:4;
+  fill:none;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.4s 0.6s forwards;
+}
+
+@keyframes stroke{
+  to{ stroke-dashoffset:0; }
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* Text */
+h2{
+  color:#28a745;
+  margin-bottom:10px;
+}
+
+p{
+  font-size:16px;
+  color:#333;
+  line-height:1.6;
+}
+</style>
 </head>
+
 <body>
 
-<p id="msg">Verifying...</p>
+<div class="container">
+
+  <!-- 🔥 Add your logo here -->
+  <img src="logo.png" alt="Kalyani Foundation Logo" class="logo">
+
+  <!-- Animated Tick -->
+  <svg class="checkmark" viewBox="0 0 52 52">
+    <circle cx="26" cy="26" r="25"/>
+    <path d="M14 27 L22 35 L38 18"/>
+  </svg>
+
+  <h2 id="title">Verifying...</h2>
+  <p id="msg"></p>
+
+</div>
 
 <script>
 const data = {
@@ -37,12 +114,16 @@ const data = {
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
+const title = document.getElementById("title");
 const msg = document.getElementById("msg");
 
 if(data[id]){
-  msg.innerHTML = `✅ Verification Successful! <b>${data[id]}</b> has successfully completed their volunteer work with <b>Kalyani Foundation</b>.`;
+  title.innerHTML = "Verification Successful!";
+  msg.innerHTML = `<b>${data[id]}</b> has successfully completed their volunteer work with <b>Kalyani Foundation</b>.`;
 }else{
-  msg.innerHTML = `❌ Invalid Certificate`;
+  title.style.color = "red";
+  title.innerHTML = "Invalid Certificate";
+  msg.innerHTML = "The certificate you are trying to verify is not valid.";
 }
 </script>
 
