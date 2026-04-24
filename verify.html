@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Verification</title>
+
+<style>
+  body{
+    font-family: Arial;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#ffffff;
+    margin:0;
+  }
+  p{
+    font-size:20px;
+    text-align:center;
+    max-width:600px;
+    line-height:1.6;
+  }
+</style>
+
+</head>
+<body>
+
+<p id="msg">Verifying...</p>
+
+<script>
+const data = {
+  "KF001": "Rahul Sharma",
+  "KF002": "Priya Patil",
+  "KF003": "Sumit Rathod"
+};
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+const msg = document.getElementById("msg");
+
+if(data[id]){
+  msg.innerHTML = `✅ Verification Successful! <b>${data[id]}</b> has successfully completed their volunteer work with <b>Kalyani Foundation</b>.`;
+}else{
+  msg.innerHTML = `❌ Invalid Certificate`;
+}
+</script>
+
+</body>
+</html>
